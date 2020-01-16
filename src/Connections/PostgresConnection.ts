@@ -73,7 +73,7 @@ export class PostgresConnection implements Connection<Knex> {
 
     truncateTables(...tables: string[]) {
         return Promise.all(tables.map(t => {
-            return this.connection.raw('TRUNCATE TABLE ' + t);
+            return this.connection.raw('TRUNCATE TABLE ' + this.connection.ref(t));
         }));
     }
 }
