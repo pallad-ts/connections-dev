@@ -1,6 +1,6 @@
 {
   "name": "@wookieb/connections-dev",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "compiled/index.js",
   "types": "compiled/index.d.ts",
@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/wookieb/connections-dev/issues"
   },
+  "files": [
+    "compiled"
+  ],
   "homepage": "https://github.com/wookieb/connections-dev#readme",
   "devDependencies": {
     "@pallad/scripts": "^1.1.4",
