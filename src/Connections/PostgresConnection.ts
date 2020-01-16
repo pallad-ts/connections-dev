@@ -24,12 +24,12 @@ export class PostgresConnection implements Connection<Knex> {
         if (!this.config.getMigratorLoaders) {
             return;
         }
-        const loaders = this.config.getMigratorLoaders();
+        const loaders = this.config.getMigratorLoaders(this.connection);
         if (loaders.length === 0) {
             return;
         }
         return createMigrator({
-            loaders: this.config.getMigratorLoaders ? this.config.getMigratorLoaders() : [],
+            loaders: this.config.getMigratorLoaders ? this.config.getMigratorLoaders(this.connection) : [],
             stateManager: StateManager.create({
                 knex: this.connection,
                 table: 'migrations'
@@ -81,6 +81,6 @@ export class PostgresConnection implements Connection<Knex> {
 export namespace PostgresConnection {
     export interface Config {
         connection: NonNullable<Knex.Config['connection']>;
-        getMigratorLoaders?: () => Loader[];
+        getMigratorLoaders?: (knex: Knex) => Loader[];
     }
 }
