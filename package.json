@@ -1,0 +1,39 @@
+{
+  "name": "@wookieb/connections-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "compiled/index.js",
+  "types": "compiled/index.d.ts",
+  "scripts": {
+    "test": "pallad-scripts test",
+    "lint": "pallad-scripts lint",
+    "compile": "pallad-scripts compile",
+    "prepublishOnly": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wookieb/connections-dev.git"
+  },
+  "author": "Łukasz Kużyński <lukasz.kuzynski@gmail.com> (http://wookieb.pl)",
+  "license": "NONE",
+  "bugs": {
+    "url": "https://github.com/wookieb/connections-dev/issues"
+  },
+  "homepage": "https://github.com/wookieb/connections-dev#readme",
+  "devDependencies": {
+    "@pallad/scripts": "^1.1.4",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^13.1.7",
+    "jest": "^24.8.0"
+  },
+  "peerDependencies": {
+    "jest": "^24.8.0",
+    "@types/jest": "^24.0.15"
+  },
+  "dependencies": {
+    "@pallad/migrator-core": "^1.0.3",
+    "@pallad/migrator-sql-state": "^1.0.5",
+    "knex": "^0.20.8",
+    "predicates": "^2.0.3"
+  }
+}
