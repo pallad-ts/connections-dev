@@ -1,6 +1,6 @@
 {
   "name": "@wookieb/connections-dev",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "compiled/index.js",
   "types": "compiled/index.d.ts",
@@ -27,16 +27,17 @@
     "@pallad/scripts": "^1.1.4",
     "@types/jest": "^24.0.15",
     "@types/node": "^13.1.7",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "knex": "^0.*"
   },
   "peerDependencies": {
     "jest": "^24.8.0",
-    "@types/jest": "^24.0.15"
+    "@types/jest": "^24.0.15",
+    "knex": "^0.*"
   },
   "dependencies": {
     "@pallad/migrator-core": "^1.0.4",
     "@pallad/migrator-sql-state": "^1.0.7",
-    "knex": "^0.20.8",
     "predicates": "^2.0.3"
   }
 }
