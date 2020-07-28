@@ -1,6 +1,6 @@
 {
   "name": "@wookieb/connections-dev",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "compiled/index.js",
   "types": "compiled/index.d.ts",
