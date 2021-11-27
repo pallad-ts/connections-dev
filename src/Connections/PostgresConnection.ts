@@ -1,7 +1,7 @@
 import {createMigrator, Loader} from "@pallad/migrator-core";
 import {StateManager} from "@pallad/migrator-sql-state";
 import {Connection} from "./Connection";
-import Knex = require("knex");
+import {Knex, knex} from 'knex';
 
 export class PostgresConnection implements Connection<Knex> {
     readonly connection: Knex;
@@ -9,7 +9,7 @@ export class PostgresConnection implements Connection<Knex> {
     private hasMigrated: boolean = false;
 
     constructor(private config: PostgresConnection.Config) {
-        this.connection = Knex({
+        this.connection = knex({
             client: 'pg',
             connection: this.config.connection
         });
@@ -50,7 +50,7 @@ export class PostgresConnection implements Connection<Knex> {
         const observer = await migrator.runTo('up');
         await new Promise((resolve, reject) => {
             observer.subscribe({
-                complete: resolve,
+                complete: () => resolve(undefined),
                 error: reject
             });
         });
@@ -73,7 +73,7 @@ export class PostgresConnection implements Connection<Knex> {
 
     truncateTables(...tables: string[]) {
         return Promise.all(tables.map(t => {
-            return this.connection.raw('TRUNCATE TABLE ' + this.connection.ref(t) + ' CASCADE');
+            return this.connection.raw(`TRUNCATE TABLE ${this.connection.ref(t)} CASCADE`);
         }));
     }
 }

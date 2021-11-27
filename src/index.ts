@@ -4,14 +4,14 @@ import * as is from 'predicates';
 const assertConfig = is.assert(is.obj, 'Config is missing');
 
 export function createConnections(config: Config): Result {
-    let _postgres: PostgresConnection;
+    let postgresInstance: PostgresConnection;
     return {
         get postgres() {
-            if (!_postgres) {
+            if (!postgresInstance) {
                 assertConfig(config.postgres);
-                _postgres = new PostgresConnection(config.postgres);
+                postgresInstance = new PostgresConnection(config.postgres);
             }
-            return _postgres;
+            return postgresInstance;
         }
     }
 }
