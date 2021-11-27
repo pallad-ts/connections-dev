@@ -1,6 +1,6 @@
 {
   "name": "@wookieb/connections-dev",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "",
   "main": "compiled/index.js",
   "types": "compiled/index.d.ts",
@@ -24,16 +24,16 @@
   ],
   "homepage": "https://github.com/wookieb/connections-dev#readme",
   "devDependencies": {
-    "@pallad/scripts": "^1.1.4",
-    "@types/jest": "^24.0.15",
-    "@types/node": "^13.1.7",
-    "jest": "^24.8.0",
-    "knex": "^0.*"
+    "@pallad/scripts": "2",
+    "@types/jest": "^27",
+    "@types/node": "^14",
+    "jest": "^27",
+    "knex": "^0.95"
   },
   "peerDependencies": {
-    "jest": "^24.8.0",
-    "@types/jest": "^24.0.15",
-    "knex": "^0.*"
+    "jest": "*",
+    "@types/jest": "*",
+    "knex": "^0.95"
   },
   "dependencies": {
     "@pallad/migrator-core": "^1.0.4",
