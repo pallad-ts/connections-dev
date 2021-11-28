@@ -23,10 +23,7 @@ export class PostgresConnection implements Connection<Knex> {
             jest.setTimeout(30000);
             await this.start()
         });
-        afterAll(async () => {
-            jest.setTimeout(30000);
-            await this.stop();
-        });
+        afterAll(this.stop.bind(this));
     }
 
     getMigrator() {
