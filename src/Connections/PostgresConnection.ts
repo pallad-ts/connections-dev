@@ -9,9 +9,12 @@ export class PostgresConnection implements Connection<Knex> {
     private hasMigrated: boolean = false;
 
     constructor(private config: PostgresConnection.Config) {
+
+        const {connection, knexOptions = {}} = this.config;
         this.connection = knex({
             client: 'pg',
-            connection: this.config.connection
+            connection,
+            ...knexOptions
         });
     }
 
@@ -81,6 +84,7 @@ export class PostgresConnection implements Connection<Knex> {
 export namespace PostgresConnection {
     export interface Config {
         connection: NonNullable<Knex.Config['connection']>;
+        knexOptions?: Omit<Knex.Config, 'connection'>;
         getMigratorLoaders?: (knex: Knex) => Loader[];
     }
 }
