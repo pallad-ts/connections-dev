@@ -18,12 +18,15 @@ export class PostgresConnection implements Connection<Knex> {
         });
     }
 
-    setupBeforeAndAfterAll(): void {
+    setupBeforeAndAfterAll(opts: { beforeTimeout?: number, afterTimeout?: number } = {beforeTimeout: 30000, afterTimeout: 10000}): void {
         beforeAll(async () => {
-            jest.setTimeout(30000);
+            opts.beforeTimeout && jest.setTimeout(opts.beforeTimeout);
             await this.start()
         });
-        afterAll(this.stop.bind(this));
+        afterAll(async () => {
+            opts.afterTimeout && jest.setTimeout(opts.afterTimeout);
+            await this.stop();
+        });
     }
 
     getMigrator() {
