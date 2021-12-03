@@ -1,4 +1,3 @@
-
 export interface Connection<T> {
     readonly connection: T;
 
@@ -6,5 +5,13 @@ export interface Connection<T> {
 
     stop(): Promise<void>;
 
-    setupBeforeAndAfterAll(): void;
+    setupBeforeAndAfterAll(opts?: Connection.BeforeAfterOptions): void;
+}
+
+
+export namespace Connection {
+    export interface BeforeAfterOptions {
+        beforeTimeout?: number;
+        afterTimeout?: number;
+    }
 }

@@ -18,13 +18,15 @@ export class PostgresConnection implements Connection<Knex> {
         });
     }
 
-    setupBeforeAndAfterAll(opts: { beforeTimeout?: number, afterTimeout?: number } = {beforeTimeout: 30000, afterTimeout: 10000}): void {
+    setupBeforeAndAfterAll(opts: Connection.BeforeAfterOptions = {beforeTimeout: 30000, afterTimeout: 10000}): void {
         beforeAll(async () => {
-            opts.beforeTimeout && jest.setTimeout(opts.beforeTimeout);
+            const timeout = opts.beforeTimeout ?? 30000;
+            timeout && jest.setTimeout(timeout);
             await this.start()
         });
         afterAll(async () => {
-            opts.afterTimeout && jest.setTimeout(opts.afterTimeout);
+            const timeout = opts.afterTimeout ?? 10000;
+            timeout && jest.setTimeout(timeout);
             await this.stop();
         });
     }
@@ -74,8 +76,10 @@ export class PostgresConnection implements Connection<Knex> {
         await this.connection.destroy();
     }
 
-    setupAfterEach(opts: { truncateTables: string[] }) {
+    setupAfterEach(opts: { truncateTables: string[], timeout?: number }) {
         afterEach(async () => {
+            const timeout = opts.timeout ?? 10000;
+            timeout && jest.setTimeout(timeout);
             await this.truncateTables(...opts.truncateTables);
         });
     }
