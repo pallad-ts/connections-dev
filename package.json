@@ -10,6 +10,9 @@
     "compile": "pallad-scripts compile",
     "prepublishOnly": "npm run compile"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wookieb/connections-dev.git"
