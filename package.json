@@ -1,6 +1,6 @@
 {
-  "name": "@wookieb/connections-dev",
-  "version": "1.2.5",
+  "name": "@pallad/connections-dev",
+  "version": "1.0.0",
   "description": "",
   "main": "compiled/index.js",
   "types": "compiled/index.d.ts",
