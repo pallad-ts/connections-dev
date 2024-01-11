@@ -27,18 +27,17 @@
   ],
   "homepage": "https://github.com/wookieb/connections-dev#readme",
   "devDependencies": {
-    "@pallad/scripts": "^2",
-    "@types/jest": "^27",
-    "@types/node": "^14",
-    "knex": "^1"
+    "@pallad/scripts": "^3",
+    "@types/node": "^18",
+    "knex": "^3"
   },
   "peerDependencies": {
-    "knex": "^1"
+    "knex": "^3"
   },
   "dependencies": {
     "@types/zen-observable": "^0.8.3",
-    "@pallad/migrator-core": "^1.1.5",
-    "@pallad/migrator-sql-state": "^1.1.5",
+    "@pallad/migrator-core": "^1",
+    "@pallad/migrator-sql-state": "^1",
     "predicates": "^2.0.3"
   }
 }
